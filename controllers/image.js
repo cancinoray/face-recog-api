@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'
+
 const returnClarifaiJSONRequestOptions = (imageUrl) => {
   // Your PAT (Personal Access Token) can be found in the portal under Authentification
   const PAT = process.env.PAT_CLARIFAI;
@@ -40,7 +42,6 @@ const returnClarifaiJSONRequestOptions = (imageUrl) => {
 }
 
 export const handleApiCall = (req, res) => {
-  // const model = 'face-detection'
   const { input } = req.body;
   console.log(input)
   fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs",returnClarifaiJSONRequestOptions(input))
